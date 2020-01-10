@@ -50,6 +50,9 @@
 			function moveBoxTo(newPositionX) {
 				box.css("left", newPositionX);
 			}
+			function moveBoxToUp(newPositionY) {
+				box.css("top", newPositionY);
+			}
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
@@ -65,7 +68,9 @@
 			var points = 0;
 			var speed = 10;
 			var direction = 1;
-
+			var positionY = 0;
+			var directionY = 1;
+			var boardHeight = jQuery(window).height();
 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -80,6 +85,14 @@
 				}
 				if (positionX < 0) {
 					speed *= -1;
+				}
+				positionY += speed * direction;
+				moveBoxToUp(positionY);
+				if (positionY > 0) {
+					directionY = 1;
+				}
+				if (positionY < boardHeight) {
+					directionY = -1;
 				}
 
 			};
