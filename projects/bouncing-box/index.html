@@ -17,7 +17,7 @@
 			left: 600px;  /* <--- Change me! */
 		}
 		body {
-			background-image: url(https://t1.daumcdn.net/friends/prod/theme/190510_Tbanner_apeach_W.jpg);
+			background-image: url("images/apeach again.jpg");
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -47,13 +47,10 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
-			}
-			function moveBoxToUp(newPositionY) {
 				box.css("top", newPositionY);
 			}
-
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
@@ -67,9 +64,8 @@
 			var positionX = 0;
 			var points = 0;
 			var speed = 10;
-			var direction = 1;
 			var positionY = 0;
-			var directionY = 1;
+			var speedY = 10;
 			var boardHeight = jQuery(window).height();
 
 			/* 
@@ -79,20 +75,19 @@
 			*/
 			function update() {
 				positionX += speed;
-				moveBoxTo(positionX);
+				moveBoxTo(positionX, positionY);
 				if (positionX > boardWidth) {
 					speed *= -1;
 				}
 				if (positionX < 0) {
 					speed *= -1;
 				}
-				positionY += speed * direction;
-				moveBoxToUp(positionY);
-				if (positionY > 0) {
-					directionY = 1;
+				positionY += speedY;
+				if (positionY < 5) {
+					speedY *= -1;
 				}
-				if (positionY < boardHeight) {
-					directionY = -1;
+				if (positionY > boardHeight) {
+					speedY *= -1;
 				}
 
 			};
@@ -107,6 +102,8 @@
 				points += 1;
 				changeBoxText(points);
 				speed += 3;
+				positionY = 0;
+				speedY += 3; 
 				
 			};
 		})();
