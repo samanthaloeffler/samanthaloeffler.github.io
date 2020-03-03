@@ -76,17 +76,17 @@ var background = function (window) {
                     if (buildingHeight <= 200) {
                         buildingHeight += 100;
                     }
-                var building = draw.rect(75, buildingHeight, 'LightGray', 'Black', 1);
+                var building = draw.bitmap('img/apeach again.png');
                 building.x = 300 * i;
-                building.y = groundY - buildingHeight;
+                building.y = groundY - 110;
                 background.addChild(building);
                 buildings.push(building);
             }
             
             // TODO 4: Part 1 - Add a tree
-            tree = draw.bitmap('img/tree.png');
+            tree = draw.bitmap('img/the frony  pne.png');
             tree.x = 300;
-            tree.y = 90;
+            tree.y = 70;
             background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
