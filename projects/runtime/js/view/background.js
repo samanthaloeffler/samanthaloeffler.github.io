@@ -86,7 +86,7 @@ var background = function (window) {
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap('img/the frony  pne.png');
             tree.x = 300;
-            tree.y = 70;
+            tree.y = 90;
             background.addChild(tree);
             
         } // end of render function - DO NOT DELETE

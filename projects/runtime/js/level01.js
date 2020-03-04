@@ -88,7 +88,7 @@ var level01 = function (window) {
         
         function createEnemy(x, y) {
             var enemy = game.createGameItem('enemy', 25);
-            var ryanEnemy = draw.bitmap('img/ryan 2.png');
+            var ryanEnemy = draw.bitmap('img/ryan.png');
             ryanEnemy.x = -25;
             ryanEnemy.y = -25;
             enemy.addChild(ryanEnemy);
