@@ -26,9 +26,10 @@ var background = function (window) {
         var background;
         
         // ANIMATION VARIABLES HERE:
-        var tree;
+        var frontBuild;
         
         var buildings = [];
+        
      
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -39,7 +40,7 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.bitmap('img/another kakao background.jpg');
+            var backgroundFill = draw.bitmap('img/kakao yellow background.jpg');
             background.addChild(backgroundFill);
             
             backgroundFill.x = canvasWidth;
@@ -61,34 +62,71 @@ var background = function (window) {
             kakaoSign.y = 20;
             background.addChild(kakaoSign);
             
-            var circle;
+           /* var circle;
             for(var i = 0; i < 100; i++) {
                 circle = draw.circle(1, 'white', 'LightGray', 0.2);
                 circle.x = canvasWidth*Math.random();
                 circle.y = groundY*Math.random();
                 background.addChild(circle);
-            }
+            }*/
             
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; ++i) {
                
-                var buildingHeight = Math.random() * 300;
-                    if (buildingHeight <= 200) {
-                        buildingHeight += 100;
-                    }
-                var building = draw.bitmap('img/apeach again.png');
-                building.x = 300 * i;
-                building.y = groundY - 110;
-                background.addChild(building);
-                buildings.push(building);
-            }
+                
+                    //if (building.x < 4000) {
+                    
+                        var building = draw.bitmap('img/neo background building.png');
+                        
+                            building.x = 300 * i;
+                            building.y = groundY - 175;
+                            background.addChild(building);
+                            buildings.push(building);
+                //}
+                
+               /* if (building.x >= 4000) {
+                
+                    var building = draw.bitmap('img/ryan background building.png');
+                    
+                        building.x = (300 * i);
+                        building.y = groundY - 100;
+                        background.addChild(building);
+                        buildings.push(building);
+                }   
+                  */
+               /* var building = draw.bitmap('img/apeach background building.png');
+                    
+                    building.x = (300 * i);
+                    building.y = groundY - 100;
+                    background.addChild(building);
+                    buildings.push(building);
+                    
+                 var building = draw.bitmap('img/game complete.png');
+                
+                    building.x = (600 * i);
+                    building.y = groundY - 100;
+                    background.addChild(building);
+                    buildings.push(building);*/
+                
+            } //i want each of the buildings to start after a certain length of x has been reached. one complete level is 4000 for x, so the new ones start at 4000 and 8000.
             
             // TODO 4: Part 1 - Add a tree
-            tree = draw.bitmap('img/the frony  pne.png');
-            tree.x = 300;
-            tree.y = 90;
-            background.addChild(tree);
+            frontBuild = draw.bitmap('img/neo front building.png');
+            frontBuild.x = 300;
+            frontBuild.y = groundY - 150;
+            background.addChild(frontBuild);
             
+            /*frontBuild = draw.bitmap('img/ryan front building.png');
+            frontBuild.x = 4700;
+            frontBuild.y = groundY;
+            background.addChild(frontBuild);
+            
+            frontBuild = draw.bitmap('img/apeach front building.png');
+            frontBuild.x = 9000;
+            frontBuild.y = groundY;
+            background.addChild(frontBuild);
+            */
+            //for the commented out front images, i want them to correlate with the level, so the ryan front with the ryan background, i just dont understand how to transition them
         } // end of render function - DO NOT DELETE
         
         
@@ -101,10 +139,10 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x - 2;
+            frontBuild.x = frontBuild.x - 2;
             
-            if(tree.x < -200) {
-                tree.x = canvasWidth;
+            if(frontBuild.x < -200) {
+                frontBuild.x = canvasWidth;
             }
             
             // TODO 5: Part 2 - Parallax

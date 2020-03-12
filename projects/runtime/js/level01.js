@@ -16,18 +16,13 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "con", "x": 400, "y": groundY},
-                { "type": "ryan", "x": 700, "y": groundY},
-                { "type": "ryan", "x": 1000, "y": 215},
-                { "type": "con", "x": 1300, "y": groundY},
-                { "type": "ryan", "x": 1600, "y": 215},
-                { "type": "con", "x": 1900, "y": groundY},
-                { "type": "con", "x": 2200, "y": groundY},
-                { "type": "ryan", "x": 2500, "y": 215},
-                { "type": "con", "x": 2800, "y": 215},
-                { "type": "ryan", "x": 3100, "y": groundY},
-                { "type": "con", "x": 3400, "y": 215},
-                { "type": "con", "x": 3700, "y": groundY}
+                { "type": "neo", "x": 500, "y": groundY},
+                { "type": "neo", "x": 800, "y": 200},
+                { "type": "neo", "x": 1300, "y": groundY},
+                { "type": "neo", "x": 1600, "y": groundY},
+                { "type": "neo", "x": 2300, "y": 200},
+                { "type": "neo", "x": 2600, "y": groundY},
+                { "type": "neo", "x": 3000, "y": 200}
             ]
         };
         window.levelData = levelData;
@@ -35,40 +30,60 @@ var level01 = function (window) {
         game.setDebugMode(false);
 
         // BEGIN EDITING YOUR CODE HERE
-        function createCon (x, y) {
+        function createNeoObstacle (x, y) {
             var hitZoneSize = 20;
             var damageFromObstacle = 10;
-            var conHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+            var neoObstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
             
-            conHitZone.x = x;
-            conHitZone.y = y;
+            neoObstacleHitZone.x = x;
+            neoObstacleHitZone.y = y;
             
-            game.addGameItem(conHitZone);
+            game.addGameItem(neoObstacleHitZone);
             
-            var obstacleImage = draw.bitmap('img/con 2.png');
-            conHitZone.addChild(obstacleImage);
+            var obstacleImage = draw.bitmap('img/neo obstacle.png');
+            neoObstacleHitZone.addChild(obstacleImage);
             
             obstacleImage.x = -25;
-            obstacleImage.y = -25;
+            obstacleImage.y = -50;
+            
         }
         
-        function createRyan (x, y) {
-            var hitZoneSize = 30; 
-            var damageFromObstacle = 20;
-            var ryanHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+        function createRyanObstacle(x, y) {
+            var hitZoneSize = 20;
+            var damageFromObstacle = 10;
+            var ryanObstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
             
-            ryanHitZone.x = x;
-            ryanHitZone.y = y;
+            ryanObstacleHitZone.x = x;
+            ryanObstacleHitZone.y = y;
             
-            game.addGameItem(ryanHitZone);
+            game.addGameItem(ryanObstacleHitZone);
             
-            var obstacleImage = draw.bitmap('img/ryan 2.png');
-            ryanHitZone.addChild(obstacleImage);
+            var obstacleImage = draw.bitmap('img/neo obstacle.png');
+            ryanObstacleHitZone.addChild(obstacleImage);
             
             obstacleImage.x = -25;
-            obstacleImage.y = -25;
-            
+            obstacleImage.y = -50;
         }
+        
+        function createApeachObsatcle(x, y) {
+            var hitZoneSize = 20;
+            var damageFromObstacle = 10;
+            var apeachObstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+            
+            apeachObstacleHitZone.x = x;
+            apeachObstacleHitZone.y = y;
+            
+            game.addGameItem(apeachObstacleHitZone);
+            
+            var obstacleImage = draw.bitmap('img/neo obstacle.png');
+            apeachObstacleHitZone.addChild(obstacleImage);
+            
+            obstacleImage.x = -25;
+            obstacleImage.y = -50;
+        }
+        
+        //i want the obstacles to do the same thing as the background buildings
+        
         
         /*
         createSawBlade(400, 300);
@@ -82,16 +97,15 @@ var level01 = function (window) {
             var firstX = firstGameItemObject.x;
             var firstY = firstGameItemObject.y;
             
-            createCon(firstX, firstY);
-            //how to add ryan to the obstacles??
+            createNeoObstacle(firstX, firstY);
         }
         
         function createEnemy(x, y) {
             var enemy = game.createGameItem('enemy', 25);
-            var ryanEnemy = draw.bitmap('img/ryan.png');
-            ryanEnemy.x = -25;
-            ryanEnemy.y = -25;
-            enemy.addChild(ryanEnemy);
+            var neoYarnEnemy = draw.bitmap('img/neo level projectile.png');
+            neoYarnEnemy.x = -25;
+            neoYarnEnemy.y = -25;
+            enemy.addChild(neoYarnEnemy);
         
             enemy.x = x;
             enemy.y = y;
@@ -120,7 +134,7 @@ var level01 = function (window) {
         
         function createReward(x, y) {
             var reward = game.createGameItem('reward', 20);
-            var lvl1Reward = draw.bitmap('img/kakao friends reward.jpg');
+            var lvl1Reward = draw.bitmap('img/kakao friends reward.png');
             lvl1Reward.x = -25;
             lvl1Reward.y = -25;
             reward.addChild(lvl1Reward);
